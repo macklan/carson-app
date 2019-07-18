@@ -13,38 +13,34 @@ import {
 import {Link as ScrollLink, Element, Events, animateScroll as scroll, scroller} from 'react-scroll'
 
 
-function Index() {
-    return (
-        <div className="center">
-            <h1>Welcome to my site!</h1>
-            <ButtonToolbar>
-                <Link to="/">
-                    <Button variant="outline-secondary">
-                        Home
-                    </Button>
-                </Link>
+class Index extends React.Component {
+    render() {
+        return (
+            <div className="center">
+                <h1>Welcome to my site!</h1>
+                <ButtonToolbar>
+                    <Link to="/template1">
+                        <Button variant="outline-secondary">
+                            Template 1
+                        </Button>
+                    </Link>
 
-                <Link to="/template1">
-                    <Button variant="outline-secondary">
-                        Template 1
-                    </Button>
-                </Link>
+                    <Link to="/template2">
+                        <Button variant="outline-secondary">
+                            Template 2
+                        </Button>
+                    </Link>
 
-                <Link to="/template2">
-                    <Button variant="outline-secondary">
-                        Template 2
-                    </Button>
-                </Link>
+                    <Link to="/template3">
+                        <Button variant="outline-secondary">
+                            Template 3
+                        </Button>
+                    </Link>
 
-                <Link to="/template3">
-                    <Button variant="outline-secondary">
-                        Template 3
-                    </Button>
-                </Link>
-
-            </ButtonToolbar>
-        </div>
-    )
+                </ButtonToolbar>
+            </div>
+        )
+    }
 }
 
 class Template1 extends React.Component {
@@ -235,31 +231,37 @@ class Template1 extends React.Component {
     }
 }
 
-function Template2() {
-    return (
-        <div className="center" id="template2">
-            <h1>Template 2</h1>
-        </div>
-    )
+class Template2 extends React.Component {
+    render() {
+        return (
+            <div className="center" id="template2">
+                <h1>Template 2</h1>
+            </div>
+        )
+    }
 }
 
-function Template3() {
-    return (
-        <div className="center" id="template3">
-            <h1>Template 3</h1>
-        </div>
-    )
+class Template3 extends React.Component {
+    render() {
+        return (
+            <div className="center" id="template3">
+                <h1>Template 3</h1>
+            </div>
+        )
+    }
 }
 
-function App() {
-    return (
-        <BrowserRouter>
-            <Route path="/" exact component={Index}/>
-            <Route path="/template1" component={Template1}/>
-            <Route path="/template2" component={Template2}/>
-            <Route path="/template3" component={Template3}/>
-        </BrowserRouter>
-    )
+class App extends React.Component {
+    render() {
+        return (
+            <BrowserRouter>
+                <Route path="/" exact component={Index}/>
+                <Route path="/template1" component={Template1}/>
+                <Route path="/template2" component={Template2}/>
+                <Route path="/template3" component={Template3}/>
+            </BrowserRouter>
+        )
+    }
 }
 
 export default App;
