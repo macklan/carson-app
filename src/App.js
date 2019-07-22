@@ -8,47 +8,16 @@ import {
     NavDropdown,
     Container,
     Row,
-    Col
+    Col,
+    Jumbotron
 } from 'react-bootstrap';
 import {Link as ScrollLink, Element, Events, animateScroll as scroll, scroller} from 'react-scroll'
 
-
 class Index extends React.Component {
-    render() {
-        return (
-            <div className="center">
-                <h1>Welcome to my site!</h1>
-                <ButtonToolbar>
-                    <Link to="/template1">
-                        <Button variant="outline-secondary">
-                            Template 1
-                        </Button>
-                    </Link>
-
-                    <Link to="/template2">
-                        <Button variant="outline-secondary">
-                            Template 2
-                        </Button>
-                    </Link>
-
-                    <Link to="/template3">
-                        <Button variant="outline-secondary">
-                            Template 3
-                        </Button>
-                    </Link>
-
-                </ButtonToolbar>
-            </div>
-        )
-    }
-}
-
-class Template1 extends React.Component {
 
     constructor(props) {
         super(props);
-        Template1.scrollToTop = Template1.scrollToTop.bind(this);
-        this.closeNavBar = this.closeNavBar(this);
+        Index.scrollToTop = Index.scrollToTop.bind(this);
     }
 
     componentDidMount() {
@@ -64,23 +33,15 @@ class Template1 extends React.Component {
     }
 
     static scrollToTop() {
-        Template1.scrollToTop();
+        Index.scrollToTop();
     }
 
     static scrollTo() {
-        Template1.scrollTo('scroll-to-element', {
+        Index.scrollTo('scroll-to-element', {
             duration: 800,
             delay: 0,
             smooth: 'easeInOutQuart'
         })
-    }
-
-    closeNavBar() {
-        this.setState(
-            {
-                navExpanded: false
-            }
-        );
     }
 
     scrollToWithContainer() {
@@ -92,7 +53,7 @@ class Template1 extends React.Component {
                 Events.scrollEvent.remove('end');
             });
 
-            Template1.scrollTo('scroll-container', {
+            Index.scrollTo('scroll-container', {
                 duration: 800,
                 delay: 0,
                 smooth: 'easeInOutQuart'
@@ -101,7 +62,7 @@ class Template1 extends React.Component {
         });
 
         goToContainer.then(() =>
-            Template1.scrollTo('scroll-container-second-element', {
+            Index.scrollTo('scroll-container-second-element', {
                 duration: 800,
                 delay: 0,
                 smooth: 'easeInOutQuart',
@@ -117,51 +78,53 @@ class Template1 extends React.Component {
     render() {
         return (
             <div>
-                <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
-                    <Navbar.Brand>Carson Badger</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                    <Navbar.Collapse id="basic-navbar-nav">
+                <Jumbotron>
+                    <Navbar>
                         <Nav className="mr-auto">
-
                             <Nav.Link>
                                 <ScrollLink activeClass="active" className="aboutMe" to="aboutMe" spy={true}
-                                            smooth={true} duration={500} offset={-60}>
+                                            smooth={true} duration={500}>
                                     About Me
                                 </ScrollLink>
                             </Nav.Link>
 
                             <Nav.Link>
                                 <ScrollLink activeClass="active" className="resume" to="resume" spy={true} smooth={true}
-                                            duration={500} offset={-60}>
+                                            duration={500}>
                                     Resume
                                 </ScrollLink>
                             </Nav.Link>
 
-                            <NavDropdown title="Projects" id="basic-nav-dropdown">
-                                <NavDropdown.Item>
-                                    <ScrollLink activeClass="active" className="project1" to="project1" spy={true}
-                                                smooth={true} duration={500} offset={-60}>
-                                        Project 1
-                                    </ScrollLink>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item>
-                                    <ScrollLink activeClass="active" className="project2" to="project2" spy={true}
-                                                smooth={true} duration={500} offset={-60}>
-                                        Project 2
-                                    </ScrollLink>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item>
-                                    <ScrollLink activeClass="active" className="project3" to="project3" spy={true}
-                                                smooth={true} duration={500} offset={-60}>
-                                        Project 3
-                                    </ScrollLink>
-                                </NavDropdown.Item>
-                            </NavDropdown>
+                            <Nav.Link>
+                                <ScrollLink activeClass="active" className="coverLetter" to="coverLetter" spy={true}
+                                            smooth={true} duration={500}>
+                                    Cover Letter
+                                </ScrollLink>
+                            </Nav.Link>
+
+                            <Nav.Link>
+                                <ScrollLink activeClass="active" className="projects" to="projects" spy={true}
+                                            smooth={true}
+                                            duration={500}>
+                                    Projects
+                                </ScrollLink>
+                            </Nav.Link>
+
+                            <Nav.Link>
+                                <ScrollLink activeClass="active" className="contact" to="contact" spy={true}
+                                            smooth={true} duration={500}>
+                                    Contact Me
+                                </ScrollLink>
+                            </Nav.Link>
+
                         </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
+                    </Navbar>
+                    <h1>
+                        Carson M. Badger
+                    </h1>
+                </Jumbotron>
                 <Container>
-                    <Row>
+                    <Row id="aboutMe" className="rowArea">
                         <Col>
                             <Element name="aboutMe" className="element">
                                 About Me
@@ -172,7 +135,7 @@ class Template1 extends React.Component {
                         </Col>
                     </Row>
                     <hr/>
-                    <Row>
+                    <Row id="resume" className="rowArea">
                         <Col>
                             <Element name="resume" className="element">
                                 Resume
@@ -183,46 +146,54 @@ class Template1 extends React.Component {
                         </Col>
                     </Row>
                     <hr/>
-                    <Row>
+                    <Row id="aboutMe" className="rowArea">
+                        <Col>
+                            <Element name="coverLetter" className="element">
+                                Cover Letter
+                            </Element>
+                            <Col>
+                                Here is my super fancy cover letter
+                            </Col>
+                        </Col>
+                    </Row>
+                    <hr/>
+                    <Row id="projects" className="rowArea">
                         <Col>
                             <Element name="projects" className="element">
                                 Projects
                             </Element>
                             <Col>
                                 Here are some of my projects I have worked on
-                                <Row>
-                                    <Col>
-                                        <Element name="project1" className="element">
+                                <Container id="projectArea">
+                                    <Row className="justify-content-md-center">
+                                        <Col md lg className="projectItem">
                                             Project 1
-                                        </Element>
-                                        <Col>
-                                            This project does x,y and z
                                         </Col>
-                                        <hr/>
-                                    </Col>
-                                    <Col>
-                                        <Element name="project2" className="element">
-                                            Project 3
-                                        </Element>
-                                        <Col>
-                                            This project does x,y and z
+                                        <Col md lg className="projectItem">
+                                            Project 1
                                         </Col>
-                                        <hr/>
-                                    </Col>
+                                        <Col md lg className="projectItem">
+                                            Project 1
+                                        </Col>
+                                        <Col md lg className="projectItem">
+                                            Project 1
+                                        </Col>
 
-                                    <Col>
-                                        <Element name="project3" className="element">
-                                            Project 3
-                                        </Element>
-                                        <Col>
-                                            This project does x,y and z
-                                        </Col>
-                                        <hr/>
-                                    </Col>
-
-                                </Row>
+                                    </Row>
+                                </Container>
                             </Col>
 
+                        </Col>
+                    </Row>
+                    <hr/>
+                    <Row id="aboutMe" className="rowArea">
+                        <Col>
+                            <Element name="contact" className="element">
+                                Contact Me
+                            </Element>
+                            <Col>
+                                Here is how you can contact me
+                            </Col>
                         </Col>
                     </Row>
                 </Container>
@@ -231,34 +202,12 @@ class Template1 extends React.Component {
     }
 }
 
-class Template2 extends React.Component {
-    render() {
-        return (
-            <div className="center" id="template2">
-                <h1>Template 2</h1>
-            </div>
-        )
-    }
-}
-
-class Template3 extends React.Component {
-    render() {
-        return (
-            <div className="center" id="template3">
-                <h1>Template 3</h1>
-            </div>
-        )
-    }
-}
 
 class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
                 <Route path="/" exact component={Index}/>
-                <Route path="/template1" component={Template1}/>
-                <Route path="/template2" component={Template2}/>
-                <Route path="/template3" component={Template3}/>
             </BrowserRouter>
         )
     }

@@ -1,7 +1,5 @@
-.row {
-    margin-top: 1%;
-    flex-direction: column;
-    height: 650px;
+.rowArea {
+    height: 100%;
 }
 
 .center {
@@ -10,4 +8,34 @@
 
 .btn-toolbar {
     justify-content: space-evenly;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+.navbar-nav {
+    border: 1px solid gray;
+    border-radius: 5px;
+    justify-content: space-evenly;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+}
+
+.projectItem {
+    text-align: center;
+    border: 1px solid gray;
+    margin: 1%;
+    min-height: 150px;
+}
+
+#projectArea {
+    margin: 1%;
+}
+
+.container {
+    margin-bottom: 10%;
+    margin-top: 10%;
 }
